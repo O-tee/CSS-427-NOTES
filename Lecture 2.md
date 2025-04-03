@@ -1,4 +1,4 @@
-# Lecture 2 Aurdiono 101.ppxt
+# Lecture 2 (4/3/25) Aurdiono 101.ppxt
 
 ## Things I'm confused about 
 
@@ -16,3 +16,8 @@ Most Arduinos are powered by 5V. The Due is a 3.3V part. IF YOU CONNECT A 5V INP
 <br/>
 
 While the AVR and ARM are very different instruction sets, the Arduino IDE cross compiler can handle either of them. 
+
+<img width="436" alt="Screenshot 2025-04-03 at 9 10 01 AM" src="https://github.com/user-attachments/assets/15328c18-1d65-4055-9dcc-f7ce4ad9df1c" />
+
+<img width="756" alt="Screenshot 2025-04-03 at 9 13 38 AM" src="https://github.com/user-attachments/assets/5f8ce8c5-f609-4667-ad8f-4dd4b4c7f1c2" />
+
