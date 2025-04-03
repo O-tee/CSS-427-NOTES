@@ -25,6 +25,9 @@ While the AVR and ARM are very different instruction sets, the Arduino IDE cross
 
 <img width="484" alt="Screenshot 2025-04-03 at 9 36 36 AM" src="https://github.com/user-attachments/assets/e6f01799-2bb1-47b2-939e-be8b366f51b8" />
 
+<img width="486" alt="Screenshot 2025-04-03 at 9 59 24 AM" src="https://github.com/user-attachments/assets/cdccff24-d5f5-4b9b-85ce-d23b618d6108" />
+
+
 
 
 
