@@ -36,7 +36,15 @@ Lower Level Calibration
 
 Electronic and Microcontroller Symbols 
 <img width="1039" alt="image" src="https://github.com/user-attachments/assets/15c12d25-2f2b-4cc9-b698-9db76dc0a33e" />
+<br/>
 
+Fuses
+- If the current gets too high, it generates a lot of heat and burns out the resistor or IC.
+- Circuits are usually designed with sacrificial elements called fuses. 
+- The fuse will be destroyed with too much current, but it protects the rest of the circuit. 
+- A fuse can be made from a thin piece of metal that vaporizes with too much current. 
+- Fuses are rated for their maximum current. 
+- There are fast-blow fuses that go right away at the stated current and slow-blow fuses that wait for the excess current to be sustained.
 
 
 
