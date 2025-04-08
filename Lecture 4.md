@@ -1,4 +1,4 @@
-# Lecture 4 (4/8/25) Sensors Electronics.ppxt
+# Lecture 4 (4/8/25) Sensors Electronics.ppxt AND 
 
 ## Things I'm confused about 
 
@@ -45,7 +45,9 @@ Fuses
 - A fuse can be made from a thin piece of metal that vaporizes with too much current. 
 - Fuses are rated for their maximum current. 
 - There are fast-blow fuses that go right away at the stated current and slow-blow fuses that wait for the excess current to be sustained.
+<br/>
 
-
+Capacitors Explained
+- https://www.youtube.com/watch?v=X4EUwTwZ110
 
 
