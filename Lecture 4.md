@@ -21,7 +21,21 @@ Calibration
   - For the TMP36, f(x) = 100 (5/1023) * x + (-50)
     - f(x) = 0.489 * x - 50 
   - Here x is the reading we get from Arduino: 0 to 1023f(x) is temperature in C.
+<br/>
 
+Lower Level Calibration 
+- If the sensor is not linear, we can force it.
+  - Polynomial:
+    - x(t) = a5 t5 + a4 t4+ a3 t3 + a2 t2 + a1 t + a0
+- This extrapolates poorly!
+- Usually dominated by a1 and a0.
+- Higher order terms smooth out the bumps.
+- Rational: x(t) = (a t + b) / (t + d)
+  - Better extrapolation and easier to invert.
+<br/>
+
+Electronic Symbols 
+<img width="1039" alt="image" src="https://github.com/user-attachments/assets/15c12d25-2f2b-4cc9-b698-9db76dc0a33e" />
 
 
 
