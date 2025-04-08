@@ -34,7 +34,7 @@ Lower Level Calibration
   - Better extrapolation and easier to invert.
 <br/>
 
-Electronic Symbols 
+Electronic and Microcontroller Symbols 
 <img width="1039" alt="image" src="https://github.com/user-attachments/assets/15c12d25-2f2b-4cc9-b698-9db76dc0a33e" />
 
 
