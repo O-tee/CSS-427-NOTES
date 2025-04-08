@@ -1,4 +1,4 @@
-# Lecture 4 (4/8/25) Sensors Electronics.ppxt AND 
+# Lecture 4 (4/8/25) Sensors Electronics.ppxt AND Serial.ppxt
 
 ## Things I'm confused about 
 
@@ -49,5 +49,76 @@ Fuses
 
 Capacitors Explained
 - https://www.youtube.com/watch?v=X4EUwTwZ110
+<br/>
+
+Transmitting data in parallel
+- Suppose we want to send the character “W”.
+- Convert to ASCII: 0x57 = 101 0111
+- Use 6, 7 or 8 bits, and send
+  1. High  (LSB)
+  2. High
+  3. High
+  4. Low
+  5. High
+  6. Low
+  7. High
+  8. Low (MSB)
+- Each signal is on a separate Data Out line
+
+<img width="607" alt="Screenshot 2025-04-08 at 10 18 51 AM" src="https://github.com/user-attachments/assets/93e6e19a-f0a8-4df3-83ad-d8794e2be211" />
+<br/>
+
+Parallel is better than Serial 
+<br/>
+
+Serial Timing 
+- Data is sent at a predetermined rate.
+- Original RS-232 was intended for < 20,000 baud (bits / s).
+- 300 baud had been common.
+- With 1 start bit, 8 data bits, 1 stop bit, no parity: baud/10 = bytes/s.
+- Common to have 6-8 data bits, 1-2 stop bits, sometimes parity bit.
+<br/>
+
+Universal Asynchronous Receive / Transmit (UART)
+- Works with hardware standard RS-232.
+- Or, can set voltage levels to 5V and 0V.
+- A common rate is 9600 baud.
+- Full duplex
+  - Rx (receive)
+  - Tx (transmit)
+  - Vcc (high)  - optional
+  - Ground (0V)
+<br/>
+
+Buffer
+- To send the text “Hello, world”, the characters are written to a buffer.
+- Hardware will place a byte on the parallel or serial line at the proper time.
+- The hardware is driven by a timer. Microcontrollers have several timers that can go at different rates.
+- After the last character has been sent to the receiving buffer (or when the buffer fills) the receiving processor gets an interrupt notifying it of data availability.
+<br/>
+
+Arduino Serial Class
+- void Serial.begin( int baud_rate); /* 4800, 9600, 19200, 115200, etc.  */
+- Serial.print(“Hello World”);
+- Serial.print( value ); // int, float, char, *char
+- Serial.print( value, BASE); /* BASE = BIN, OCT, DEC, HEX or floating digits. */
+- Serial.println(); // same as print but includes CR, LF
+- More on https://www.arduino.cc/reference/en/language/functions/communication/serial/ 
+<br/>
+
+Parity 
+- UART Serial has the option to include a parity bit
+- If data is corrupted and noise flips the value of one bit, parity will indicate that there is an error.
+- Suppose we transmit “HELlo” with even parity.
+  - In ASCII, “HELlo” is 0x48 45 4C 6C 6F or 
+  - 01001000_ 01000101_ 01001100_ 01101100_ 01101111_
+  - H has 2 bits set to 1. We want the total number of bits to be even; set the parity bit to 0.E has 3 bits set to 1; set the parity to 1.
+- 010010000 010001011 010011001 011011000 011011110
+- Adding start and stop bits gives
+- 0010010000100100010111001001100110011011000100110111101
+<br/>
+
+To compute the transmission time for a message
+<img width="660" alt="Screenshot 2025-04-08 at 10 35 54 AM" src="https://github.com/user-attachments/assets/17215d4a-943b-4aa2-b2b7-eea699dc2a83" />
 
 
