@@ -120,5 +120,6 @@ Parity
 
 To compute the transmission time for a message
 <img width="660" alt="Screenshot 2025-04-08 at 10 35 54 AM" src="https://github.com/user-attachments/assets/17215d4a-943b-4aa2-b2b7-eea699dc2a83" />
+<img width="677" alt="Screenshot 2025-04-08 at 10 39 13 AM" src="https://github.com/user-attachments/assets/004eb275-fdfc-4df3-92d9-041020e9b516" />
 
 
