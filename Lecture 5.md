@@ -1,10 +1,10 @@
-# Lecture 5 (4/10/25) Serial.ppxt
+# Lecture 5 (4/10/25) Serial.ppxt AND Interrupts.ppxt
 
 ## Things I'm confused about 
 
 ## After class TODO
 
-## Notes
+## Notes Serial 
 Serial Peripheral Interpahce (SPI)
 - Four wire connection
   - CIPO: Controller in, peripheral out. Aka MISO: Master in, slave out.
@@ -44,8 +44,29 @@ Physical location of SPI pins
 - ICSP (In-Circuit Serial Programming) has no CS
 <img width="478" alt="Screenshot 2025-04-10 at 9 52 39 AM" src="https://github.com/user-attachments/assets/6d3043c9-9978-4016-8f9f-84cbceed651d" />
 
+## Notes Inerrupts
 
+Interrupts 
+- When you move the mouse, it can generate an interrupt signal to the computer.
+- The computer pauses the task it is doing, and jumps to a mouse service routine where it records the mouse position.
+- The computer then resumes the task it was working on.
+- At some time the operating system will run a thread that updates the display and moves the cursor to a new position.
 
+AVR External Interrups 
+- The Arduino Uno has two external interrupts, which are on D2 and D3.
+- If you hook up a switch to D2, you can program the Arduino to react as soon as the switch changes state.
+- The Arduino Mega has six interrupts on pins D2, D3, D18, D19, D20 and D21.
+- The Arduino Due can interrupt on any digital pin.
+
+Arduino Interrupts 
+- attachInterrupt(number, ISR, mode);
+  - ISR is interrupt service routine to call.
+  - mode is RISING, FALLING, CHANGE or LOW.
+- detachInterrupt();
+- interrupts();
+  - Looks like a subroutine but compiles to the one-byte assembly instruction SEI (set interrupt flag).
+- noInterrupts();
+  - Compiles to CLI (clear interrupt flag)
 
 
 
