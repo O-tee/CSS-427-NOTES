@@ -27,6 +27,25 @@ In System Programming (ISP) is a variant of SPI
 - The Reset pin is used to signal programming
 <img width="554" alt="image" src="https://github.com/user-attachments/assets/b14924e9-3ab8-4277-a854-f48467e1ffc2" />
 
+SPI Mode
+- SPI is a loose standard; read the device datasheet.
+
+SPI on Arduino
+- SPI.beginTransaction( SPISettings(…) );
+- digitalWrite (CS, LOW);  // Makes peripheral pay attention to SPI
+- SPI.transfer(); // perhaps multiple times
+- digitalWrite (CS, HIGH);  // Peripheral ignores SPI
+- SPI.endTransaction(); 
+
+Physical location of SPI pins
+- You can use any pin for CS; can have several.
+- Shields expect to find SPI on 10, 11, 12, 13
+- All Arduinos have the same connection to SPI on the ICSP
+- ICSP (In-Circuit Serial Programming) has no CS
+<img width="478" alt="Screenshot 2025-04-10 at 9 52 39 AM" src="https://github.com/user-attachments/assets/6d3043c9-9978-4016-8f9f-84cbceed651d" />
+
+
+
 
 
 
