@@ -79,7 +79,7 @@ Serial Timing
 - Common to have 6-8 data bits, 1-2 stop bits, sometimes parity bit.
 <br/>
 
-Universal Asynchronous Receive / Transmit (UART)
+Universal Asynchronous Receive Transmit (UART)
 - Works with hardware standard RS-232.
 - Or, can set voltage levels to 5V and 0V.
 - A common rate is 9600 baud.
@@ -88,6 +88,28 @@ Universal Asynchronous Receive / Transmit (UART)
   - Tx (transmit)
   - Vcc (high)  - optional
   - Ground (0V)
+<br/>
+
+Simpleest: 3 wire interface (425)
+- Ground
+- TXD - transmit serial data
+- RXT - receive serial data
+<br/>
+
+GPIO Pins
+- A general-purpose input/output is an uncommitted digital signal pin on an integrated circuit or electronic circuit board which may be used as an input or output, or both, and is controllable by software.
+- For each GPIO set of pins, there will be a series of memory
+mapped registers:
+  - data
+  - Direction: input or output
+  - input has pullup
+  - output is tri-state
+  - Alternate function:
+    - special digital functions
+    - analog functions
+<img width="722" alt="Screenshot 2025-04-10 at 1 57 34 PM" src="https://github.com/user-attachments/assets/9cbb1193-dc64-4ed0-a361-2ee707aae9a6" />
+
+
 <br/>
 
 Buffer
