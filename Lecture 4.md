@@ -88,9 +88,10 @@ Universal Asynchronous Receive Transmit (UART)
   - Tx (transmit)
   - Vcc (high)  - optional
   - Ground (0V)
+- 
 <br/>
 
-Simpleest: 3 wire interface (425)
+Simplest Serial Port: 3 wire interface (425)
 - Ground
 - TXD - transmit serial data
 - RXT - receive serial data
@@ -108,11 +109,9 @@ mapped registers:
     - special digital functions
     - analog functions
 <img width="722" alt="Screenshot 2025-04-10 at 1 57 34 PM" src="https://github.com/user-attachments/assets/9cbb1193-dc64-4ed0-a361-2ee707aae9a6" />
-
-
 <br/>
 
-Buffer
+<br/> Buffer
 - To send the text “Hello, world”, the characters are written to a buffer.
 - Hardware will place a byte on the parallel or serial line at the proper time.
 - The hardware is driven by a timer. Microcontrollers have several timers that can go at different rates.
@@ -143,5 +142,19 @@ Parity
 To compute the transmission time for a message
 <img width="660" alt="Screenshot 2025-04-08 at 10 35 54 AM" src="https://github.com/user-attachments/assets/17215d4a-943b-4aa2-b2b7-eea699dc2a83" />
 <img width="677" alt="Screenshot 2025-04-08 at 10 39 13 AM" src="https://github.com/user-attachments/assets/004eb275-fdfc-4df3-92d9-041020e9b516" />
+
+<br/> I^2C: inter integrated circuit bus
+- Reference: https://simple.wikipedia.org/wiki/I%C2%B2C
+- This common bus is for multiple master and peripheral devices
+  – Most common MCU support it
+- Three wire bus:
+  - Ground
+  - SCL = Serial Clock
+  - SDA = serial data
+- The transmitting device provides the clock and the serial data
+- The clock edges highlight there the received data is sampled
+- The data may contain a destination address as well
+
+
 
 
