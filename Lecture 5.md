@@ -44,6 +44,74 @@ Physical location of SPI pins
 - ICSP (In-Circuit Serial Programming) has no CS
 <img width="478" alt="Screenshot 2025-04-10 at 9 52 39 AM" src="https://github.com/user-attachments/assets/6d3043c9-9978-4016-8f9f-84cbceed651d" />
 
+USB: universal serial bus (425)
+- Reference: https://simple.wikipedia.org/wiki/USB
+- Huge installed base
+- On most MCU (microcontroller unit), also used as the control port, for JTAG, downloading code to execute, and single-step MCU programs
+- There may be addition USB ports for input or output:
+  - USB 1.1: 1.5 or 12 Mbps
+  - USB 2.0: 480 Mbps
+- 4 wire interface (usb3 [?]):
+  - Ground & +5v DC power (Vbus)
+  - Twisted pair differential half-duplex data
+<br/>
+
+CAN: Controller Area Network (425)
+- The Controller Area Network (CAN) bus is a robust communication protocol used in automotive and industrial applications to enable efficient data exchange between electronic control units (ECUs). It utilizes a two-wire twisted pair for differential signaling, enhancing resistance to electromagnetic interference. This system allows multiple ECUs to communicate over a single bus, reducing wiring complexity and improving reliability.
+- Reference: https://en.wikipedia.org/wiki/CAN_bus
+- Invented by Bosch for automobile control
+- Widely used in cars, trucks and commercial aircraft
+- Three wire:
+  - Ground
+  - Differential signal pair
+- Half duplex
+- Some microcontrollers support it, e.g. TIVA
+- I have a pair of CAN shields for Arduino MCU
+<br/>
+
+DAC: Digital to Analog conversion (425)
+- Two main types:
+  - Direct: weighted sum of currents to produce a voltage
+  - Indirect: vary duty cycle of a signal, and low pass filter it (PWM)
+- DAC in MCU
+  - In the Arduino Uno, in the TIVA and is simpler STM32, there is no internal DAC
+  - In the lab kit, the TIVA port B is connected to an external DAC08 Integrated Circuit.
+  - The STM32 devices in the lab contain two 12-bit DACs, which can be written at 5 MHz rates
+  - In the Winter 2025 class, some students used the STM32 to generate the waveforms in software
+<br/>
+
+PWM: Pulse Width Modulation (425)
+- This is a simple digital-to-analog conversion method
+- Tradeoff: arbitrary precision, but precision costs time
+- The GPIO output port is digital: high (e.g. +3.3v) or low voltage
+- The output is periodic at some programmed frequency
+- The output is low pass filtered, resulting in an average value somewhere between the low and high voltages
+- If the duty cycle is 50%, the filtered output will be 50%, e.g. 1.65v
+- If always off, filtered output is 0.0v; if always on, filtered output is 3.3.v
+- The filter cutoff frequency should be a lot lower than the periodic frequency, perhaps 10:1
+<br/>
+
+ADC: Analog to Digital COnverstion (425)
+- There are three main types of ADC:
+  - Flash: expensive and fast
+  - Dual slope: cheap, very accurate, and slow
+  - Successive approximation: intermediate cost, can be fast enough
+- Flash conversion is used in digitizing communication waveforms
+  - Typically, their will be a low noise preamp and automatic gain control at the front end, to constrain the number of bits to convert
+- Dual slow is mostly used in lab instruments
+- Successive approximation ADC are common
+  - All the MCUs described on Lesson 2 contain 1 or more of them
+<br/>
+
+Falsh ADC (425)
+- In general, the number of comparators is exponential with resolution.
+- The main application: digitizing communications waveforms or video camera waveforms.
+- For communications (physical layers), there will typically be a low noise analog front end followed by an automatic gain control amplifier
+- Result: constrain the dynamic range of the input, so less resolution is needed.
+
+SAR: Successive Approximation Register (425) (do more research)
+
+
 ## Notes Inerrupts
 
 Interrupts 
