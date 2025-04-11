@@ -44,7 +44,12 @@ Physical location of SPI pins
 - ICSP (In-Circuit Serial Programming) has no CS
 <img width="478" alt="Screenshot 2025-04-10 at 9 52 39 AM" src="https://github.com/user-attachments/assets/6d3043c9-9978-4016-8f9f-84cbceed651d" />
 
-USB: universal serial bus (425)
+
+<br/> Overhead percentage <br/>
+<img width="443" alt="Screenshot 2025-04-11 at 10 16 47 AM" src="https://github.com/user-attachments/assets/d4b4da80-66d5-4d8e-94af-bef15a2a0132" />
+
+
+<br/> USB: universal serial bus (425)
 - Reference: https://simple.wikipedia.org/wiki/USB
 - Huge installed base
 - On most MCU (microcontroller unit), also used as the control port, for JTAG, downloading code to execute, and single-step MCU programs
@@ -110,6 +115,12 @@ Falsh ADC (425)
 - Result: constrain the dynamic range of the input, so less resolution is needed.
 
 SAR: Successive Approximation Register (425) (do more research)
+
+
+
+
+
+
 
 
 ## Notes Inerrupts
