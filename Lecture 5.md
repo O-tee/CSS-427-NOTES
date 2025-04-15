@@ -146,6 +146,18 @@ Arduino Interrupts
   - Looks like a subroutine but compiles to the one-byte assembly instruction SEI (set interrupt flag).
 - noInterrupts();
   - Compiles to CLI (clear interrupt flag)
+<br/>
+ 
+Edge Interrupts 
+- Edge interrupts have nothing to do with transitions of the system clock.
+- An interrupt event (such as pushing a reset button) is asynchronous to the clock
+- An edge interrupt is triggered when the button transitions from unpressed to pressed.
+- A level interrupt is active while the button is pushed.
+- There is no data associated with interrupts.
+
+Interrupt Timing/Code
+... 
+
 
 
 
