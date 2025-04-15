@@ -126,6 +126,7 @@ SAR: Successive Approximation Register (425) (do more research)
 ## Notes Inerrupts
 
 Interrupts 
+- In coding, interrupts refer to signals sent by hardware devices or software to the CPU, indicating an event that requires attention. They allow certain important tasks to happen in the background and are enabled by default. However, they can slightly disrupt the timing of code and may be disabled for particularly critical sections of code.
 - When you move the mouse, it can generate an interrupt signal to the computer.
 - The computer pauses the task it is doing, and jumps to a mouse service routine where it records the mouse position.
 - The computer then resumes the task it was working on.
