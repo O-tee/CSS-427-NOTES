@@ -32,31 +32,30 @@ Other Interrupts
   - Pin change
   - Analog Input
 
-
-
-
+Interrupt Vector Table
+- There is a table of interrupt vectors (each vector is a few bytes).
+- The table is typically at the start or end of addressable memory space.
+- Each vector is typically a jump to an ISR.
+- On power-on, the processor goes to address 0 or 0xFF...FF, where a vector jumps to start-up code.
+- If D2 is attached to an interrupt, when that line goes active the processor jumps to the second entry in the table
 
 ---
 Interrupts are incredibly useful and often essential in embedded systems like the Arduino. Here’s why you’d want to use them:
 ### ✅ Why Use Interrupts?
-
 1. **Respond to Events Immediately**  
    Interrupts let your microcontroller react instantly to external events (like a button press, sensor spike, or data from a serial port) without constantly checking (polling) for them in the main loop.
-
 2. **Efficient CPU Usage**  
    Without interrupts, you'd have to write code that constantly checks for input ("busy waiting"). Interrupts free the CPU to do other things, making your program more efficient.
-
 3. **Precise Timing**  
    For tasks like reading sensors at specific intervals or generating precise PWM signals, interrupts help maintain consistent timing—especially with timer interrupts.
-
 4. **Handling Asynchronous Data**  
    Interrupts are perfect for receiving serial data, counting pulses from an encoder, or measuring the time between two signal edges.
+   
 ### ⚠️ When to Be Careful
-
 - If you’re using shared variables (like in the image you posted), you need to protect them from being changed mid-operation by disabling interrupts briefly (as shown).
 - Interrupts should be kept short and fast—do as little as possible inside them and return quickly.
-### 🔧 Common Use Cases
 
+### 🔧 Common Use Cases
 - External interrupt from a button (attachInterrupt in Arduino)
 - Timer interrupt to blink an LED or log data every second
 - Serial receive interrupt to store incoming bytes in a buffer
