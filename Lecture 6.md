@@ -39,6 +39,22 @@ Interrupt Vector Table
 - On power-on, the processor goes to address 0 or 0xFF...FF, where a vector jumps to start-up code.
 - If D2 is attached to an interrupt, when that line goes active the processor jumps to the second entry in the table
 
+Pin change interrupt
+- The Uno is organized in ports
+- Port D has digital pins 0,1,2,3,4,5,6,7  (PCINT2)
+- Port B has digital pins 8,9,10,11,12,13 and two pins not used on Arduino  (PCINT0)
+- Port C has analog pins 0,1,2,3,4,5 (PCINT1)
+- The Mega has its own port organization.
+- Whenever any pin on a port changes, the pin change interrupt is active.
+- See pages 162-166 of Williams.
+
+Name of Pin Interrupts <br/>
+<img width="658" alt="Screenshot 2025-04-15 at 10 13 24 AM" src="https://github.com/user-attachments/assets/a3a8545c-c88a-4f7c-a6b9-e69968bb7f73" />
+
+
+
+
+
 ---
 Interrupts are incredibly useful and often essential in embedded systems like the Arduino. Here’s why you’d want to use them:
 ### ✅ Why Use Interrupts?
