@@ -96,4 +96,23 @@ Servo Motors:
   - A home switch
 - Lab 5A and chapter 11 of the text deal with servo motors
 
+Relays:
+- A microcontroller can be connected to the coil
+- Anything else to contacts 
+- Contact could be a 120V AC switch drawing several amps
+
+
+Lasar Optical Triangulation 
+- does not need fast clock
+- Returned spot is typically imaged on a 1x1024 photodetector.
+  - Discrete: process the 1024 pixels and find the peak (camera)
+  - Analog: Device returns A and B which are measurements of closeness to an end (position sensitive detectors)
+- Position is (A-B) / (A+B)
+- (A+B) is signal strength
+- Do not believe measurements from a weak signal!
+- 2 examples follow in the slides
+- 
+
+
+
 
