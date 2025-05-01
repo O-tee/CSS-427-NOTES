@@ -125,5 +125,40 @@ Bluetooth Profiles
 <img width="594" alt="Screenshot 2025-05-01 at 9 44 07 AM" src="https://github.com/user-attachments/assets/c4101c16-e6ca-484c-a352-6cccd6d249aa" />
 
 
+RFCOMM: Radio Frequency Communication
+- RFCOMM is a simple set of transport protocols, providing emulated RS-232 serial port – sometimes called Serial Port Emulation
+  - The Bluetooth Serial Port Profile is based on this protocol
+  - RFCOMM provides a simple reliable data stream to the user, similar to TCP
+- Many Bluetooth applications use RFCOMM because of its widespread support and publicly available API on most operating systems
+  - Applications that used a serial port to communicate can be quickly ported to use RFCOMM
+
+L2CAP: Logical Link Control & Adaptation Protocol
+- L2CAP functions
+  - Transporting data for higher layer protocols (e.g., multiplexing)
+  - Segmentation and reassembly of packets
+  - Providing one-way transmission management of multicast data
+  - Quality of Service (QoS) management
+- L2CAP modes
+  - Basic mode
+    - 672 bytes as the default MTU
+    - 48 bytes minimum mandatory unit
+    - Configurable payload up to 64 KB
+- Retransmission and flow control modes
+  - Reliable or asynchronous data per channel by performing retransmissions and CRC checks
+
+**Generic Access Profile (GAP) (42/64)** 
+<br/> ...
+
+**Zigbee (51/64)**
+
+Data Transmission – Device to Coordinator
+<br/> <img width="451" alt="Screenshot 2025-05-01 at 10 18 03 AM" src="https://github.com/user-attachments/assets/7596dcfa-6fd8-4d8a-8f59-f4b753ab3a57" />
+
+
+Data Transmission – Coordinator to Device
+<br/> <img width="531" alt="Screenshot 2025-05-01 at 10 19 13 AM" src="https://github.com/user-attachments/assets/c7296c52-19de-44d1-9eed-db8b143d0dfa" />
+
+**Xbee (63/64)**
+
 
 
