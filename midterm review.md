@@ -341,7 +341,7 @@ else {
 - PWM on AVR uses duty cycle @ 490 Hz or 980 Hz
 - Servos want a pulse (typically 30 Hz) between 1 and 2 ms wide. 
 
-**PWM (Pulse Width Modulation)** is a technique used to simulate analog voltage levels using digital signals. It rapidly turns a digital pin **on and off** at a fixed frequency, and the **ratio of on-time to off-time** (called the *duty cycle*) determines the effective output voltage or power.
+**PWM (Pulse Width Modulation)** is a technique used to simulate (faking -tim) analog voltage levels using digital signals. It rapidly turns a digital pin **on and off** at a fixed frequency, and the **ratio of on-time to off-time** (called the *duty cycle*) determines the effective output voltage or power.
 
 ### 🔧 How PWM Works:
 A square wave is generated, and its **duty cycle** (the percentage of time it's "on") determines the average output:
