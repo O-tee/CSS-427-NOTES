@@ -194,30 +194,230 @@ Would you like a visual diagram of how interrupts work?
 
 
 ## Round off
+``` cpp
+long int mvolts = (5000* analogRead(A1)) / 1023; 
+int temp_C = mvolts/10 -50;
+int temp_F  = 9 * temp_C / 5 + 32; 
+// What is the problem?
+```
 
+- int doesnt take into account of decimals (my guess prob wrong)
 
+### Avoiding Round off
 
-
-
-## Avoiding Round off
+```cpp
+long int mvolts = (5000 * analogRead(A1)) / 1023;
+long int temp_Cx10 = mvolts - 500;
+int temp_F  = 5 * temp_Cx10 / 90 + 32; 
+int temp_C = tempCx10 / 10;
+int fraction = tempCx10 % 10;
+printf(“%3d.%-1d C\n”, temp_C, fraction);
+```
 
 
 
 
 
 # Timers
+- Both the Uno and Mega have two 8-bit counter/timers
+- Uno has one 16-bit timer; Mega has four
+- When input is an oscillator, it is a timer; events as input make it a counter
+- Timers are configured by several special purpose registers
+- Interrupt on overflow from 0xFF to 0 (8-bit) or 0xFFFF to 0 (16-bit)
+- Putting the right number in the timer gets an interrupt when time has elapsed
+- Can divide the system clock by 1, 8, 64, 256 or 1024
 
+**Timers** in Arduino (and microcontrollers in general) are built-in hardware modules that count clock cycles to help you **measure time**, **generate accurate delays**, and **create PWM signals** without relying on software `delay()` functions.
 
+### 🔧 What Can Timers Do?
+1. **Measure time** (e.g., how long a button is held)
+2. **Generate delays** (precise microsecond/millisecond intervals)
+3. **Create PWM signals** (used for dimming LEDs, controlling servos, etc.)
+4. **Trigger interrupts** (run code at regular intervals)
+5. **Count external events** (like pulses from a sensor)
 
+### ⏲️ How Timers Work
+Timers count at a set rate derived from the Arduino's clock (usually 16 MHz). You can control:
+* The **prescaler** (slows the counting rate)
+* The **top value** (where the timer resets)
+* What to do on **overflow** or **compare match**
+
+### ⌛ Example Use in PWM
+Arduino uses timers to create analog-like output with `analogWrite()`:
+
+```cpp
+analogWrite(9, 127); // Uses Timer1 on pin 9 to output PWM
+```
+
+### 🧠 Types on Arduino Uno:
+* **Timer0**: Used by `millis()`, `delay()`, etc.
+* **Timer1**: 16-bit, good for servo control
+* **Timer2**: 8-bit, can also be used for custom PWM or tone
+Would you like a code example for setting up a custom timer interrupt or PWM signal?
 
 ## Music with timer: Globals
 
-
+```cpp
+/* Tune: Twinkle, Twinkle
+  Note                    F4,   F4,   C5,    C5,  D5,  D5,   C5
+Frequency (Hz)  349, 349, 523, 523, 587, 587, 523
+Duration  (ms)   500, 500, 500, 500, 500, 500, 1000
+Use timer/counter 2 overflow to set frequency.
+Use time/counter 1 overflow for duration
+frequency in Hz; half period in μs
+    For range of E1 (41 Hz) to G6 (1568 Hz) period is 24,390 us to 6 μ s */
+#define HALF_PERIOD_us(frequency) (1000000 / (2*frequency)
+#define NOTE_COUNT 7
+const long int note_gap_ms = 50;     // time between notes
+short int note_index = 0;  // global
+bool resting = FALSE;   //global
+```
 
 ## Set note duration timer
+``` cpp
+int set_timer1(duration_ms)  {   // 16-bit timer
+// for times of 50 to 1000 ms
+// divisor is 1024; clock is 62.5 ns; tick is 64 us
+TCCR1B &= ~(0x02); TCCR1B |= 0x05; // divisor = 1024
+unsigned long int ticks = duration_ms * 1000 / 64;
+if (--ticks > 0xFFFF) ticks = 0xFFFF;
+// Set timer for the duration of the note
+OCR1A =  0xFFFF – ticks;  
+}
 
-
-
+```
 
 ## Set frequency timer
+``` cpp
+int set_timer2(frequency)  {
+/* For range of E1 (41 Hz) to G6 (1568 Hz) period is  24,390 us to 6 us */
+    unsigned long int time_ns = HALF_PERIOD_us(frequency) * 1000;
+// assume 62.5 ns clock 
+   unsigned int ticks = (time_ns * 2) / 130;   // 48 to 390,240 for tones
+if (ticks <= 32)                {TCCR2B =  0x01;      divisor = 1; }
+else if (ticks <= 1024)   (TCCR2B =  0x04;      divisor = 64;}
+else                                  {TCCR2B =  0x07;     divisor =1024;}
+ticks *= divisor;  
+if (--ticks > 0xFF) ticks = 0xFF;
+OCR2A =  0xFF – ticks;  // Set timer to produce a square wave on speaker }
+```
+
+## Interrupt to toggle frequency
+``` cpp
+ISR(TIMER2_OVF_vect) {  // on overflow interrupt from timer 2
+// for speaker connected to D7 of Uno (Port D7)
+If (resting) 
+    PORTD &= ~ (1<<PB7);  // clear speaker pin
+else 
+    PORTD ^= (1<<PB7);   // toggle the output port// could use digital.write to pin 7 but it may not be fast enough
+}
+```
+
+## Interrupt to go to next note
+``` cpp
+ISR(TIMER1_OVF) {  // on overflow interrupt from timer 1 for note duration
+resting = !resting;    // set a gap between notes
+if (resting)  { PORTD &= ~ (1<<PB7);  // clear speaker pin
+         set_timer1(note_gap_ms);      }
+else {
+    if (++note_index > = NOTE_COUNT)  return;
+    set_timer2(Frequency[note_index]);
+    set_timer1(Duration[note_index]);
+    PORTD |= (1<<PB7);  // Speaker high }  }
+```
+
+
+
+
+
+
+
+
+# PWM
+- is a square wave
+- Compiler can generate a .lst file showing the assembly language instructions.
+- We generally want to have delays in the loop() to keep it from going too fast
+- AVR’s PWM is a digital square wave faking an analog signal; sometimes OK; sometimes not.
+- PWM on AVR uses duty cycle @ 490 Hz or 980 Hz
+- Servos want a pulse (typically 30 Hz) between 1 and 2 ms wide. 
+
+**PWM (Pulse Width Modulation)** is a technique used to simulate analog voltage levels using digital signals. It rapidly turns a digital pin **on and off** at a fixed frequency, and the **ratio of on-time to off-time** (called the *duty cycle*) determines the effective output voltage or power.
+
+### 🔧 How PWM Works:
+A square wave is generated, and its **duty cycle** (the percentage of time it's "on") determines the average output:
+* **0% duty cycle** = always off (0V)
+* **50% duty cycle** = on half the time (about 2.5V if using 5V)
+* **100% duty cycle** = always on (5V)
+
+### ⚡ Uses of PWM:
+* **Dimming LEDs**
+* **Controlling motor speed**
+* **Generating audio signals**
+* **Controlling servos (with modified PWM timing)**
+
+### 🧪 Arduino Example:
+```cpp
+analogWrite(9, 127); // 50% duty cycle on pin 9 (out of 255)
+```
+This will make an LED appear half as bright as full power.
+
+### 🛠️ Pins with PWM on Arduino Uno:
+PWM-capable pins are usually marked with a `~` symbol:
+**3, 5, 6, 9, 10, 11**
+
+
+
+
+
+
+
+
+# Sensors and Actuators
+- Many kinds of sensors can be input
+- An analog input depends both on the accuracy of the sensor and the resolution of the ADC
+- An actuator lets the system change the environment – it often involves controlling a motor.
+- Sensors or actuators may have their own dedicated microcontroller.
+- Small motors may be controlled by PWM or pulses; bigger ones may need a relay or opto-isolator.
+
+### 🔍 **Sensors and Actuators** are two fundamental components used in embedded systems, robotics, IoT, and automation:
+
+## 🧭 **Sensors**
+**Definition:** A sensor is a device that **detects or measures physical conditions** and converts them into electrical signals that a microcontroller (like an Arduino) can read.
+
+### 📏 Examples of Sensors:
+* **Temperature** → TMP36, LM35
+* **Light** → Photoresistor (LDR), TSL2561
+* **Distance** → Ultrasonic (HC-SR04), IR sensors
+* **Motion** → PIR sensor, Accelerometer (MPU6050)
+* **Pressure, gas, humidity, sound**, etc.
+
+### 🧠 Sensor Output:
+* Analog (varying voltage) → e.g., 0–5V
+* Digital (HIGH/LOW or serial data) → e.g., 1 or 0
+
+## ⚙️ **Actuators**
+**Definition:** An actuator is a device that **performs a physical action** based on electrical input, often from a microcontroller or controller system.
+
+### 🛠️ Examples of Actuators:
+* **Motors** → DC motor, servo motor, stepper motor
+* **LEDs** → Light up or blink
+* **Relays** → Switch larger electrical loads
+* **Speakers** → Sound output
+* **Linear actuators** → Create straight-line motion
+
+### 🔄 Input from Controller:
+Actuators take commands (e.g., PWM or digital signals) and turn them into **movement, light, sound, or force**.
+
+### 🧩 Summary:
+
+| Device   | Direction | Converts        | Example Use              |
+| -------- | --------- | --------------- | ------------------------ |
+| Sensor   | Input     | Physical → Data | Measure room temperature |
+| Actuator | Output    | Data → Action   | Open a door with a motor |
+
+
+
+
+
+
 
