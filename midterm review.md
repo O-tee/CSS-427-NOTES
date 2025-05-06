@@ -101,13 +101,29 @@ Would you like a diagram showing how UART works or how to connect two UART devic
 
 
 # Interrupts
-- A running process can pause when an interrupt takes over
+A running process can pause when an interrupt takes over
 - The interrupt must not corrupt registers or data used by others
 - Lock out interrupts while manipulating any variables that could be changed by interrupts.
 - Minimize time in interrupt service routines
 - “volatile” warns the compiler not to optimize variables
 - 2 external interrupts on Uno; 6 on Mega
-- Interrupt vector table provides many more
+- Interrupt vector table provides many more 
+
+ 
+Initialize all variables; reset will not restore original values
+- **EEPROM** is meant for parameters that seldom change
+- Interrupts can remove the need for blocking code.
+- Think of the worst case for interrupts happening at the wrong time and prevent it.
+- Integer arithmetic is faster than floating point
+- A union can remove the need to cast to another type
+- Keypad outputs to rows and reads columns.
+
+const int circum = 397
+- stores in flash mem
+- without const, it does to ram 
+
+#define circum = 397
+- takes the text 'circum and replaces it with 397
 
 **Interrupts** are a fundamental feature in microcontrollers (like the one in an Arduino) that **temporarily pause the normal execution of code** to immediately respond to important events — like a button press, a sensor signal, or a timer expiring.
 
@@ -164,12 +180,15 @@ Would you like a visual diagram of how interrupts work?
 
 ## Float Arithmetic
 
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/9346ca1a-8b4e-4777-834d-663ebf6683be" />
+
 
 
 
 
 
 ## Integer Arithmetic
+<img width="694" alt="image" src="https://github.com/user-attachments/assets/f49e634d-2065-405c-8b5a-7391a93faf15" />
 
 
 
