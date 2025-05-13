@@ -1,10 +1,10 @@
-# (5/13/25) Making Waves.pptx
+# (5/13/25) Making Waves.pptx and Subsumption.pptx
 
 ## Things I'm confused about 
 
 ## After class TODO
 
-## Notes 
+## Notes Making Waves
 
 ### Synthesizers
 - A good quality organ or synthesizer combines sine waves.
@@ -61,6 +61,7 @@ Modes
 
 ### PWM on UNO
 might be wrong slightly
+
 <img width="460" alt="Screenshot 2025-05-13 at 9 15 53 AM" src="https://github.com/user-attachments/assets/3d9670ac-5d5f-4564-bb1f-1066fef7ce0e" />
 
 
@@ -73,6 +74,7 @@ might be wrong slightly
 
 ### Maximum PWM speed
 <img width="669" alt="Screenshot 2025-05-13 at 9 22 33 AM" src="https://github.com/user-attachments/assets/ba88ae39-26ca-4ed6-8e31-9094b7346509" />
+
 ---
 bunch of pics:
 compare outputs
@@ -108,6 +110,59 @@ play a note
 You can generate a base waveform for any instrument.
 Instead of a note, the waveform can be speech
 Willson shows how to make a talking instrument on p. 396-407
+
+## Notes Subsumption
+
+### Early Artificial Intelligence
+<img width="437" alt="Screenshot 2025-05-13 at 9 50 47 AM" src="https://github.com/user-attachments/assets/c286b365-1834-411c-a2cd-a2c8275430d1" />
+
+### Original MUSHR design
+- Stock RC car has battery, motor, steering and RC controller.
+- MUSHR upgraded transmission and replaced RC controller with game controller
+- Second battery provides power to Jetson Nano.
+- Nano controls car over USB using skateboard controller (VESC)
+- Nano has USB connector to depth camera and hobbyist Lidar. 
+
+
+### Subsumption Architecture
+<img width="532" alt="Screenshot 2025-05-13 at 10 01 18 AM" src="https://github.com/user-attachments/assets/bdc68a06-ca4f-42d1-8e9a-0e251e80c38e" />
+
+### Augmented finite state machine
+FSM plus a timer that can initiate a state change.
+- Networks are built by wiring input ports to output ports.
+- Inputs receive short messages.
+- All messages have the same number of bits.
+<img width="366" alt="image" src="https://github.com/user-attachments/assets/0e1b6c49-df9f-4077-958a-89d414d51b62" />
+
+### Highly Distributed System
+- No central planner
+- No world model
+- Each sensor and actuator has its own simple microprocessor
+- Similar to a chain  of reflexes
+
+### AFSM
+- Inputs may be suppressed by messages that arrive from elsewhere and block the normal input.
+- Outputs may be inhibited by other messages that block normal output for a specified time.
+- A reset state can force each FSM to state nil.
+- There is no shared memory.
+- There are no global world models.
+- No traditional AI planning.
+
+---
+wandering robot slide 
+- 13-16
+
+hallway following robot
+- 17 - 20
+
+Genghis robot **(and other stuff)**
+- 21 - 31 
+
+Tom and jerry robot
+- 32 - 39
+
+---
+
 
 
 
