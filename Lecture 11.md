@@ -71,9 +71,51 @@ might be wrong slightly
 <img width="440" alt="Screenshot 2025-05-13 at 9 19 34 AM" src="https://github.com/user-attachments/assets/71aba5da-9a4e-492e-a0d8-0a9a771c7b80" />
 
 
-
 ### Maximum PWM speed
 <img width="669" alt="Screenshot 2025-05-13 at 9 22 33 AM" src="https://github.com/user-attachments/assets/ba88ae39-26ca-4ed6-8e31-9094b7346509" />
+---
+bunch of pics:
+compare outputs
+clock divisors
+output compare registers
+
+---
+### Direct-Digital Synthesis (DDS)
+- Due has two analog outputsBut Due has different registers and architecture
+- Once you can make analog output, drive it from a table
+- The fast way to make sine is table-driven
+- The same technique works for complex waveforms
+
+### Sine wave notes
+- Set up a fast PWM
+- Run PWM output through a low-pass filter
+- Set up a table
+- At the right time, write a value from the table to PWM
+
+### To go an octave up, skip every other sample 
+<img width="342" alt="Screenshot 2025-05-13 at 9 31 26 AM" src="https://github.com/user-attachments/assets/fb2eeefc-08d4-4ca9-9ab4-dd6c9e807f78" />
+
+### Arbitrary notes
+- If original note was A4 (440 Hz, step size 1), octave is A5 (880 Hz, step size 2)
+- We could get E5 (660 Hz) with a step size of 1.5
+- Step size 1.5 means we alternate stepping by 1 and 2
+- We can use this trick to get any note.
+
+play a note
+
+### Can use any waveform
+- This technique works for more complicated waves than sine.
+You can generate a base waveform for any instrument.
+Instead of a note, the waveform can be speech
+Willson shows how to make a talking instrument on p. 396-407
+
+
+
+
+
+
+
+
 
 
 
