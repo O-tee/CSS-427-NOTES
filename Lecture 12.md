@@ -1,4 +1,4 @@
-<img width="321" alt="image" src="https://github.com/user-attachments/assets/b386305f-bb41-4cf5-9863-03d75261a645" /># (5/15/25) I2C.pptx and ARM.pptx
+# (5/15/25) I2C.pptx and ARM.pptx
 
 ## Things I'm confused about 
 
