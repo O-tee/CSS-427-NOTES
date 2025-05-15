@@ -1,4 +1,4 @@
-# (5/15/25) I2C.pptx and ARM.pptx
+<img width="321" alt="image" src="https://github.com/user-attachments/assets/b386305f-bb41-4cf5-9863-03d75261a645" /># (5/15/25) I2C.pptx and ARM.pptx
 
 ## Things I'm confused about 
 
@@ -145,14 +145,103 @@ Cortex-M processors are backward compatible. For example, a program compiled for
 - Many General Purposes registers
 - Few addressing modes
 
+---
+
+- goes through load and store
+
+---
+
+### Initialization
+- When the program {int x = -2; x = x + 1;} is loaded, x = -2.
+- When the program executes once, x = -1.
+- If the reset button is pushed, x stays -1 before execution.
+- After reset and execution, x = 0.
+- int x = 2; is a declaration and initialization; not an executable instruction.
+- The program {int x; x = -2; x = x + 1} will behave differently.
+
+### Assembly Instructions Supported
+- Arithmetic and logic
+  - Add, Subtract, Multiply, Divide, Shift, Rotate
+- Data movement
+  - Load, Store, Move
+- Compare and branch
+  - Compare, Test, If-then, Branch, compare and branch on zero
+- Miscellaneous
+  - Breakpoints, wait for events, interrupt enable/disable, data memory barrier, data synchronization barrier
+
+### ARM Instruction Format
+<img width="589" alt="Screenshot 2025-05-15 at 9 48 52 AM" src="https://github.com/user-attachments/assets/25c573eb-d16f-40e6-bdff-252289454aaa" />
+
+- Label is a reference to the memory address of this instruction.
+- Mnemonic represents the operation to be performed.
+- The number of operands varies, depending on each specific instruction. Some instructions have no operands at all.
+  - Typically, operand1 is the destination register, and operand2 and operand3 are source operands.
+  - operand2 is usually a register.
+  - operand3 may be a register, an immediate number, a register shifted to a constant amount of bits, or a register plus an offset (used for memory access).
+- Everything after the semicolon “;” is a comment, which is an annotation explicitly declaring programmers’ intentions or assumptions. 
+
+<img width="593" alt="Screenshot 2025-05-15 at 9 49 57 AM" src="https://github.com/user-attachments/assets/309705e0-bc42-4fe7-96a2-6e4a9de989a5" />
+
+### Shifts
+- Left shift << is multiplication by a power of two.
+- X = y << 3;   // often faster than a multiply
+- X = y * 8;   // same result
+- In hardware, it is easy to build an adder or a shift register.
+- How do you build a hardware multiplier?
+- X = y * 5;   // 5 = 0b0101
+- X = y + (y<<2);  // what the hardware is doing
+- X = 1*y + 0*(y<<1) + 1*(y<<2) + 0*(y<<3);  // general
+- A processor with no multiply instruction would add and shift in software.
 
 
+### Registers
+
+<img width="548" alt="Screenshot 2025-05-15 at 9 54 52 AM" src="https://github.com/user-attachments/assets/ec244d78-8a2b-4b35-a9ed-b1977627203b" />
+
+- There are 21 registers (32 bit wide):
+  - 13 General Purpose Registers which can hold data or addresses
+  - Stack pointer, link pointer, and program counter
+  - 5 special registers
+ 
+- According to ARM Procedure Call Standard (AAPCS), registers R0,R1,R2, and R3 are used to pass input parameters into a C function. 
+- The return parameter is placed in Register R0.
+- The Program Counter R15 points to the address of the next instruction to be executed.
 
 
+ <img width="520" alt="image" src="https://github.com/user-attachments/assets/2da2e0fa-b3b2-49d2-bd01-d0f9f4068c48" />
 
 
+### PSR Register
+<img width="567" alt="image" src="https://github.com/user-attachments/assets/d28f5979-a743-4ed8-ae4e-30688eef3128" />
+
+- The Program Status Register has 3 status registers: Application (APSR), Interrupt(IPSR), and Execution (EPSR). 
+- These registers can be accessed individually or in combination as the PSR.
 
 
+### Link Register R14
+- Link Register: Provides some linking functions to set up a connection between the main program and the calling functions or subroutines
+- When a subroutine is called, the returning address should be entered into R14
+- After the subroutine is done, the contents of R14 is fed into the PC so the program continues execution
+
+
+### Stack Pointer Register R13
+- Stack Pointer register (SPR) stores current stack address:
+- The Main Stack Pointer (MSP) is used for the system program working in the handler mode
+- The Process Stack Pointer (PSP) is used for the user’s program working in the thread mode.
+- Only one stack pointer is active at a time. The default stack pointer is the MSP after the system is reset.
+
+<img width="556" alt="image" src="https://github.com/user-attachments/assets/a4ae2605-29f9-4ccb-a9de-48f712dcc63d" />
+
+<img width="546" alt="image" src="https://github.com/user-attachments/assets/18612755-de87-48ed-997b-46a3bc7672fe" />
+
+### Memory
+
+<img width="646" alt="Screenshot 2025-05-15 at 10 02 59 AM" src="https://github.com/user-attachments/assets/7c3c8e39-d089-45ea-b4da-505d162c0012" />
+
+Microcontrollers within the same family differ by the amount of memory and by the types of I/O modules
+Arduino Due is based on Atmel SAM3X8E Cortex-M3. It has100 KiB RAM, 512 KiB Flash, 103 PIO, PWM, CAN, DMA, USB
+
+http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-11057-32-bit-Cortex-M3-Microcontroller-SAM3X-SAM3A_Datasheet.pdf 
 
 
 
