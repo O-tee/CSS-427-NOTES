@@ -78,17 +78,86 @@ void handlerSend() // will be called when data is requested.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Notes ARM.pptx
+
+### Introduction
+- ARM is a 32-bit Reduced Instruction Set Computer (RISC) instruction set architecture (ISA) developed by ARM.
+- It was named the Advanced RISC Machine, and before that, the Acorn RISC Machine. Originally conceived by Acorn Computers for use in its personal computers.
+- The relative simplicity of ARM processors makes them suitable for low power applications. As a result, they have become dominant in the
+- mobile and embedded electronics market, as relatively low-cost, small microprocessors and microcontrollers.
+
+
+### ARM CORTEX
+- The family is divided into three subfamilies:CORTEX Ax, CORTEX Rx, and CORTEX Mx,
+  - The x indicates that after the letter (A, R, M) is a number that identifies the core.>
+<img width="522" alt="image" src="https://github.com/user-attachments/assets/18b2827e-f23a-467c-b303-33a112d80ac4" />
+
+### ARM CORTEX Application
+- ARM Cortex-A (Application)
+- ARMv7-A or ARMv8-A architecture to provide fast performance for sophisticated devices such as smart phones and tablets. 
+- They support full-fledged operating systems such as Linux, iOS, and Android.
+
+### ARM CORTEX Real-Time
+- The ARM Cortex-R (Real-time)
+- High-performance computing solutions for embedded systems where reliability, high availability, fault tolerance and/or deterministic real-time responses are needed.
+- Cortex-R processors are used in products where performance requirements and timing deadlines must always be met.
+- In addition, Cortex-R processors are used in electronic systems which must be functionally safe to avoid hazardous situations, for example, in medical applications or autonomous systems.
+
+### ARM CORTEX Microcontroller
+- The ARM Cortex-M ( Microcontroller) 
+- An excellent tradeoff between performance, cost, and energy efficiency.
+- Suitable for a broad range of microcontroller applications such as home appliances, robotics, and smart watches\
+
+
+### Architecture
+<img width="461" alt="image" src="https://github.com/user-attachments/assets/f7509f36-e3f9-48d1-9b60-d43377be6531" />
+
+
+### Thumb instructions
+- ARMv7-M supports Thumb instructions and does not support the ARM 32. ARM processors are required to switch to the thumb state to execute 16-bit instruction and to the ARM state to run a 32-bit instruction. 
+- Cortex-M processors can execute a mix of 16-bits and 32-bits thumb-2 instructions without changing the processor state, thus eliminating the overhead of state switching. 
+
+### Instruction Sets
+<img width="403" alt="image" src="https://github.com/user-attachments/assets/67329bed-2967-441e-97e7-e05f7c65ab74" />
+
+Cortex-M processors are backward compatible. For example, a program compiled for M3 can run on Cortex-M4 without any modification
+
+
+### Cortex-M Architecture
+<img width="444" alt="image" src="https://github.com/user-attachments/assets/5c30724f-8856-4633-9104-5bcd76297bef" />
+
+- Harvard Architecture RISC
+- Instructions fetched from ROM using ICode bus
+- Data are exchanged with memory and I/O via the system bus interface.
+- On Cortex-M4, a second I/O bus for high-speed devices such as USB is available
+- Having multiple buses means the processor can perform multiple tasks in parallel.
+- The following are some of the tasks that can occur in parallel:
+  - ICode bus: Fetch opcode from ROM
+  - DCode bus: Read constant data from ROM
+  - System bus: Read/write data from RAM or I/O, fetch opcode from RAM
+  - PPB: Read/write data from internal peripherals
+  - AHB: Read/write data from high-speed I/O and parallel ports (M4 only)
+- Few instructions
+- Fixed lengths
+- Execute in 1 or 2 cycles,
+- Only load and store can access memory,
+- No one instruction can both read and write memory
+- Many General Purposes registers
+- Few addressing modes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
