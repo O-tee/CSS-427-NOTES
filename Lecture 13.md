@@ -146,6 +146,40 @@ OBD-II supports several communication protocols (depending on vehicle make and m
 | Access Tool    | OBD-II scanner or Bluetooth/WiFi dongle + mobile app |
 
 
+---
+
+## Digital Signal Processor (DSP)
+- Measure, filter and/or compress real-world analog signals.
+- Dedicated DSP is more power efficient than equivalent silicon on general computer.
+- DSP may be sandwiched between ADC & DAC.
+- Latency constraint.
+
+### Architecture
+- DSP instruction sets may be irregular.
+- Often use library instead of depending on compiler.
+- Hardware support for
+ - Circular buffers
+ - Several memory accesses per cycle
+ - Single Instruction, Multiple Data (SIMD)
+ - Very Long Instruction Words (VLIW)
+ - Fast Multiply-Accumulate (MAC)
+ - Tight loops
+
+
+### Program Flow
+- Pipelined architecture
+- Parallel MAC units
+- Integrated floating point
+- Hardware controlled looping without overhead
+- Specialized cache aware DMA
+- Harvard Architecture
+- Saturation arithmetic (no overflow)
+
+### Development 
+
+### FPGA
+
+
 
 
 
