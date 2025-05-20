@@ -31,3 +31,35 @@ And your generator polynomial is: `1011` (CRC-3)
 You perform binary division and get a remainder (say, `100`).
 So the full message sent becomes: `11010011101100100`.
 If even 1 bit changes during transmission, the remainder won't match when the receiver checks.
+
+---
+
+### 🔧 Why do we "bit-stuff" in a CAN bus?
+In the Controller Area Network (CAN) protocol, **bit stuffing** is used to ensure that the signal remains synchronized and to avoid confusion with special control signals — especially the **End of Frame (EOF)** and **acknowledgment** bits.
+
+### 🧠 What is Bit Stuffing?
+Bit stuffing means:
+👉 Every time the transmitter sends **five consecutive bits** of the same value (either five 1s or five 0s), it **inserts a "stuffed" bit** of the opposite value.
+For example:
+* If the data has: `11111`, a 0 is added → `111110`
+* If the data has: `00000`, a 1 is added → `000001`
+The receiver knows to remove the stuffed bit when it sees five identical bits in a row.
+
+### 🧩 Why is Bit Stuffing Necessary in CAN?
+1. **Clock synchronization**
+   * CAN is asynchronous — there’s no separate clock line.
+   * Bit stuffing creates edges (changes from 1 to 0 or 0 to 1), which help the receiver stay synchronized with the sender's timing.
+2. **Avoiding special bit patterns**
+   * Certain patterns (like 6 or more consecutive 1s) have special meaning in CAN — for example, marking the end of a frame.
+   * Bit stuffing prevents data from accidentally looking like control information.
+
+### 🎯 Summary:
+🟩 Bit stuffing ensures:
+* Proper timing (synchronization)
+* No accidental control signal mimicry
+🟥 It is automatically handled by CAN controllers, so as a programmer or engineer, you usually don’t need to manually stuff bits.
+
+
+
+<img width="573" alt="Screenshot 2025-05-20 at 9 41 22 AM" src="https://github.com/user-attachments/assets/5f50ba59-1459-4fa8-acd3-33e4269d2b9c" />
+
