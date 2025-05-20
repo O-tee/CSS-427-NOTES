@@ -93,7 +93,53 @@ The receiver knows to remove the stuffed bit when it sees five identical bits in
 * No accidental control signal mimicry
 🟥 It is automatically handled by CAN controllers, so as a programmer or engineer, you usually don’t need to manually stuff bits.
 
-
+---
 
 <img width="573" alt="Screenshot 2025-05-20 at 9 41 22 AM" src="https://github.com/user-attachments/assets/5f50ba59-1459-4fa8-acd3-33e4269d2b9c" />
+
+---
+
+**OBD-II (On-Board Diagnostics II)** is a standardized system built into most modern cars and trucks to monitor and report the health of the vehicle's key systems—especially the engine and emissions-related components.
+
+### 🚗 What Does OBD-II Do?
+* It continuously monitors systems like the engine, transmission, fuel, and exhaust.
+* If something goes wrong (e.g., a misfire, faulty oxygen sensor, or high emissions), the system:
+  * Logs a **Diagnostic Trouble Code (DTC)**
+  * Turns on the **"Check Engine" light**
+
+### 🔌 Where Is It Found?
+OBD-II systems are required in all cars and light trucks sold in the U.S. since **1996**.
+You can usually find the OBD-II port:
+* Under the dashboard
+* Near the driver's seat
+* It's a **16-pin** connector
+This port is used to plug in a diagnostic tool or scanner.
+
+### 🔧 What Can You Do With It?
+Using an OBD-II scanner, you can:
+* Read and clear error codes (DTCs)
+* View real-time data (engine RPM, temperature, fuel trim, etc.)
+* Perform emissions tests
+* Track fuel efficiency and driving habits
+
+### 📡 Communication Protocols
+OBD-II supports several communication protocols (depending on vehicle make and model), including:
+* **CAN (Controller Area Network)** — the most common today
+* **ISO 9141-2**
+* **SAE J1850 PWM/VPW**
+* **KWP2000**
+
+### ✅ Summary
+| Feature        | Description                                          |
+| -------------- | ---------------------------------------------------- |
+| Full Name      | On-Board Diagnostics II                              |
+| Required Since | 1996 (U.S. vehicles)                                 |
+| Used For       | Emission control, engine diagnostics, data logging   |
+| Interface Type | 16-pin port, usually under the dashboard             |
+| Access Tool    | OBD-II scanner or Bluetooth/WiFi dongle + mobile app |
+
+
+
+
+
 
