@@ -6,6 +6,7 @@
 
 ## Notes 
 
+## CAN
 CAN stands for **Controller Area Network**. It is a robust communication protocol designed to allow microcontrollers and devices (called "nodes") to communicate with each other without needing a central computer.
 Originally developed by Bosch in the 1980s, CAN is widely used in automotive systems but is also popular in industrial automation, robotics, and medical equipment.
 
@@ -42,6 +43,8 @@ In a car, systems like the engine control unit (ECU), anti-lock braking system (
 
 ---
 
+## Cyclic Redundancy Check (CRC)
+
 A **Cyclic Redundancy Check (CRC)** is an error-detecting code used to detect accidental changes to raw data in digital networks and storage devices. It is widely used in communication protocols like Ethernet, USB, and file formats such as ZIP and PNG.
 ### 💡 In Simple Terms:
 A CRC is a type of checksum — it’s a small value (typically 8, 16, or 32 bits) calculated from a larger block of data using polynomial division. When data is sent, the CRC value is calculated and sent along with it. On the receiving end, the CRC is recalculated and compared. If it doesn't match, there's likely an error in the data.
@@ -67,6 +70,8 @@ So the full message sent becomes: `11010011101100100`.
 If even 1 bit changes during transmission, the remainder won't match when the receiver checks.
 
 ---
+
+## Bit Stuffing
 
 ### 🔧 Why do we "bit-stuff" in a CAN bus?
 In the Controller Area Network (CAN) protocol, **bit stuffing** is used to ensure that the signal remains synchronized and to avoid confusion with special control signals — especially the **End of Frame (EOF)** and **acknowledgment** bits.
@@ -98,6 +103,8 @@ The receiver knows to remove the stuffed bit when it sees five identical bits in
 <img width="573" alt="Screenshot 2025-05-20 at 9 41 22 AM" src="https://github.com/user-attachments/assets/5f50ba59-1459-4fa8-acd3-33e4269d2b9c" />
 
 ---
+
+## OBD-II (On-Board Diagnostics II)
 
 **OBD-II (On-Board Diagnostics II)** is a standardized system built into most modern cars and trucks to monitor and report the health of the vehicle's key systems—especially the engine and emissions-related components.
 
