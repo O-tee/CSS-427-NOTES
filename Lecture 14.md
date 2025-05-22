@@ -173,6 +173,26 @@ There is a soft boundary between these three
 - Performance – response time, throughput, resource usage.
 - Supportability – maintainability, internationalization, configurability.
 
+## Requirements as UP artifacts
+- Use case models
+- Supplementary specification
+- Glossary / data dictionary
+- Vision / high concept
+- Domain rules
+
+### Use cases
+- Use cases are not diagrams; they are text.
+- An actor is something with behavior.
+- Scenario (use case instance) is a specific sequence of interactions between actors and the system.
+- A use case is a collection of related success and failure scenarios that describe an actor with a goal.
+
+## POS example – Handle Returns
+- Main Success Scenario: A customer arrives at a checkout with items to return. The cashier uses the point of sales (POS) system to record each returned item …
+- Alternative Scenarios:
+- If the customer paid by credit, and the reimbursement transaction to their credit account is rejected, inform the customer and pay them with cash.
+- If the item identifier is not found, notify the cashier and suggest manual entry.
+- If the system detects failure to communicate with the external accounting system …
+
 
 
 
