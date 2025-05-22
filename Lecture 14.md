@@ -79,8 +79,99 @@
 - Pick 10% of the requirements that have high risk or value or significantly impact the core architecture.
 - For the remaining day and a half, do a detailed analysis of these requirements.
 
+## Iteration 1
+- On 1st two days, pairs model the system with UML diagrams.
+- Developers then program, test and integrate.
+- One week before the end, ask if all iteration goals can be met; if not, descope.
+- Have a code freeze, then a demo to stakeholders.
+
+## Second requirements workshop
+- Held near the end of iteration 1.
+- Pick another 10-15% of significant use cases.
+- Analyze them in detail.
+- About 25% of use cases and non-functional requirements are done in detail.
+- Requirements are not perfect.
+
+### Requirements
+- Functional – Services the system shall provide and how it behaves in particular situations
+- Non-functional – Constraints such as timing and standards
+- Domain – Characteristics of the application domain
+There is a soft boundary between these three
+
+## More iterations
+- Iteration 2 is similar to 1.
+- After 4 iterations, have 80-90% of requirements in detail.
+- About 10% of the system is done.
+- End of elaboration phase.
+- Because of realistic investigation and feedback, estimates are much more reliable.
+- Requirements are stabilized, though never completely frozen.
 
 
+## Agile UP
+- Prefer a small set of Unified Process (UP) activities and artifacts.
+- Requirements and design use feedback; not completed before implementation.
+- Detailed plan only for the next iteration.
+
+### Agile modeling
+- The purpose of modeling is primarily to understand, not to document.
+- Quickly explore alternatives.
+- Don’t model all the software. Model and apply UML to unusual and tricky parts of the design.
+- Use the simplest tool possible.
+- Model in pairs at whiteboard.
+- Accept that all models will be inaccurate.
+
+## Best practices
+- Do high risk and high value issues first.
+- Continuously engage users.
+- Build core architecture early.
+- Test early, often and realistically.
+- Apply use cases where appropriate.
+- Do some visual modeling.
+- Manage change requests and configurations.
+
+## UP Phases
+- Inception – like a feasibility study.
+- Elaboration – refine the vision and implement core architecture.
+- Construction – Implement remaining low risk tasks.
+- Transition – Beta tests, deployment.
+
+## UP disciplines
+- Business (domain) modeling.
+- Requirements – Use cases, etc.
+- Design of software
+- Implementation
+- Test
+- Deployment
+
+## Phases and disciplines
+- During any phase, all disciplines are present to greater or lesser degree.
+- An artifact is the UP term for any work product.
+- All UP artifacts are optional.
+"You should use iterative development only on projects that you want to succeed." – Martin Fowler
+
+## Iterative development
+- Less project failure.
+- Early mitigation of high risks.
+- Early visible progress.
+- Early feedback that better meets real needs.
+- Managed complexity.
+- Development process can improve iteration to iteration.
+
+## Inception
+- Envision the product scope, vision, and business case.
+- Do the stakeholders have basic agreement on the vision and is it worth investing in serious investigation?
+- Get a rough, unreliable range of cost.
+
+## Evolutionary requirements
+- Requirements are capabilities and conditions to which the system must conform.
+- Find, document, organize and track the changing requirements of a system.
+
+## FURPS
+- Functional – features, capabilities, security.
+- Usability – human factors, help, documentation.
+- Reliability – frequency of failure, recoverability, predictability.
+- Performance – response time, throughput, resource usage.
+- Supportability – maintainability, internationalization, configurability.
 
 
 
