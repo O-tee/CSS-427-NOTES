@@ -1,4 +1,4 @@
-<img width="346" alt="image" src="https://github.com/user-attachments/assets/4a666942-b431-4445-87f1-f8f9ead410d8" /># Iterative Development.pptx 
+# Iterative Development.pptx 
 
 ## Things I'm confused about 
 
