@@ -193,8 +193,18 @@ There is a soft boundary between these three
 - If the item identifier is not found, notify the cashier and suggest manual entry.
 - If the system detects failure to communicate with the external accounting system …
 
+## Requirements artifacts
+- Use case model (primarily text)
+- Supplementary specification
+- Glossary
+- Vision
+- Business rules
+All are optional.
 
 
+---
+
+got lazy with the rest of the notes 
 
 
 
