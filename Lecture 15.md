@@ -1,4 +1,4 @@
-<img width="654" alt="image" src="https://github.com/user-attachments/assets/c649e77c-2812-4c30-85e9-58f3032d6956" /># Multitasking & Control Systems
+# Multitasking & Control Systems
 
 ## Subsumption Architecture
 - Invented by Rodney Brooks.
