@@ -1,3 +1,4 @@
+5/27/25
 # Multitasking & Control Systems
 
 ## Subsumption Architecture
@@ -191,6 +192,8 @@ return 0;  }
 - Even with the careful use of locks, an untimely interrupt can be disastrous, and will usually not show up in testing.
 - Avoid using threads (other than interrupts) in embedded systems without RTOS.
 
+---
+
 # Control Systems
 
 ## An embedded system is often more than ON/OFF
@@ -245,7 +248,7 @@ return 0;  }
 ### Arduino PID library
 <img width="345" alt="Screenshot 2025-05-27 at 10 31 22 AM" src="https://github.com/user-attachments/assets/3d757ff6-d619-4fbc-9ed8-7574929696f9" />
 
-
+---
 
 # Memory considerations
 
