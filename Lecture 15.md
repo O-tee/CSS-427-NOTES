@@ -1,4 +1,4 @@
-# Multitasking & Control Systems
+<img width="654" alt="image" src="https://github.com/user-attachments/assets/c649e77c-2812-4c30-85e9-58f3032d6956" /># Multitasking & Control Systems
 
 ## Subsumption Architecture
 - Invented by Rodney Brooks.
@@ -235,12 +235,106 @@ return 0;  }
   - https://www.youtube.com/watch?v=wkfEZmsQqiA 
 
 
+## PID has three magic numbers
+- Typical values: KP = 0.45, KI = 0.40, KD = 0.05
+- More real world considerations for PID controllers are covered in tutorials 2, 3, 4, 5, 6 and 7.
+- There are various methods to tune PIDs to come up with good numbers for KP, KI, and KD
+- Trial and error usually works.
+- Unlike more sophisticated control methods, PID treats the plant as a black box and does not model its dynamics.
+
+### Arduino PID library
+<img width="345" alt="Screenshot 2025-05-27 at 10 31 22 AM" src="https://github.com/user-attachments/assets/3d757ff6-d619-4fbc-9ed8-7574929696f9" />
 
 
 
+# Memory considerations
+
+## C vs. C++ 
+- C offers advantages over C++ for small systems:
+- C is often faster.
+- C++ statements can generate considerable overhead.
+- Almost every chip has a C compiler; C++ is not as widespread.
+- Classes are convenient, but you can write object oriented code in almost any language.
+- C “struct” does much of C++ “class”.
 
 
+## Memory Allocation
+- In smaller embedded systems, it may be best to avoid malloc().
+- How will you handle running out of memory? You probably do not have an OS to provide virtual memory.
+- The memory needs of the program are often known. Reserving space for global variables is practical, and not a problem if the program is not too big.
+- Memory can be shared with union;
+- Specify hardware with enough memory.
 
+
+## Memory
+- Huge influence on speed
+- Some memory is volatile – goes away on power off.
+- Systems may mix fast and slow memory to save cost or power.
+- Cache is fast memory.
+- Memory can be mapped to include registers and I/O.
+
+## Random Access Memory (RAM)
+- Volatile.
+- SRAM (Static) is faster than DRAM (Dynamic) but takes more area on silicon.
+- DRAM needs to be periodically refreshed.
+- Extra slow response if you try to use it at the same time that hardware is refreshing it.
+- DRAM access time varies.
+- An address mapped to SRAM will execute faster.
+
+## Read Only Memory (ROM)
+- Non-volatile.
+- Factory masked ROM cannot be changed.
+- Old EPROM (Erasable Programmable) was held under a UV light for 30 minutes to erase.
+- EEPROM (Electrically) can take ms to erase.
+- Fairly fast to read, but slow to write.
+
+## Arduino and EEPROM
+- The Arduino has 1024 bytes of EEPROM
+- EEPROM.write() takes 3.3 ms.
+- Specified life is 100,000 cycles.
+- Write too much, and you wear out the Arduino.
+- EEPROM is intended for parameters or firmware that rarely change.
+
+
+## FLASH form of EEPROM
+- Read is slower than SRAM or DRAM.
+- Write is way slow.
+- NOR is random access
+- NAND is faster than NOR, but is a block (100 – 1000 bits) at a time.
+- Typically NOR < 1M writes; NAND < 10M
+
+## Non-volatile Peripherals
+- Disks require seek time to position read/write head.
+- Head is very close to surface; can crash into it if system is vibrating.
+- Slow
+- SD (secure digital) card is block addressable flash memory. 
+
+## Cache
+- Scratchpad is working memory.
+- Cache is a duplicate of a memory location.
+- The cache memory is faster than the original.
+- Logical Address
+  - MMU  → Physical Address.
+- The Memory Management Unit can make memory access vary by a factor of 1000.
+
+## Alignment
+- Words of 16, 32, 64 bits need to be aligned so that they have the same start position.
+- The first byte may be MSB (big endian).
+- The first byte may be LSB (little endian).
+- Some processors map unused address space into bit access addresses.
+
+## Faults
+- Segmentation fault: in multi-tasking, code is restricted to an area of memory.
+- Garbage collection: automatically doing free().
+- Memory leak: programmer never frees memory; Can bring embedded system to a halt.
+- No good real-time way to do defragmentation.
+- Better to avoid malloc() / free().
+- Do not use recursion: stack overflow.
+
+## C memory
+- Data normally passed by value.
+- Pointers passed by reference.
+- Do not expect data on the stack to be valid after subroutine returns.
 
 
 
