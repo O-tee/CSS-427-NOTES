@@ -78,9 +78,42 @@ Assumes that context switch time is negligible, which isn’t always true.
 - The formula is good theory but rather useless in practice.
 - It tells us that it is a good idea to design systems so that utilization stays under 70%
 
+## RM Exercise
+- Periodic task T1 has a period of 12 time units and execution time of 1; task T2 has period of 24 time units and execution time of 10 time units; task T3  has period of 8 and takes 3 time units to execute. The tasks are preemptive. 
+a) Using Rate Monotonic (RM) scheduling, show the timing for the three tasks.
+
+<img width="559" alt="Screenshot 2025-05-29 at 9 20 35 AM" src="https://github.com/user-attachments/assets/a9a2006f-978b-4854-a36c-6b1ee0f01cba" />
+
+### Solution 
+Tasks have no priorities. RM does the tasks with shortest execution times first.
+
+<img width="558" alt="Screenshot 2025-05-29 at 9 20 22 AM" src="https://github.com/user-attachments/assets/3e64077f-1282-4ea6-ad5f-f15b99cfe26c" />
 
 
+## Earliest deadline first (EDF)
+- In the case of non-periodic tasks that do not have priorities, but instead have deadlines, the solution is obvious: do the task with the soonest deadline first. 
+This is also called Jackson's algorithm, after the first person to publish the idea. 
+A minor modification (select the earliest deadline at the moment) can handle periodic tasks.
+EDF is harder to implement than RM, but gives better performance.
 
+### Exercise 
+- Periodic task T1 has a period of 12 time units and execution time of one time unit; task T2 has period of 24 time units and execution time of 10 time units; task T3 takes 3 time units to execute and has period of 8. The tasks are preemptive. 
+b) If the tasks are non-preemptive, how would they be scheduled with Earliest Deadline First (EDF)?																							
+
+<img width="559" alt="Screenshot 2025-05-29 at 9 20 35 AM" src="https://github.com/user-attachments/assets/a9a2006f-978b-4854-a36c-6b1ee0f01cba" />
+
+### Solution 
+At time 18, either T1 or T3 could be scheduled, since they have the same deadline.
+
+<img width="555" alt="Screenshot 2025-05-29 at 9 33 53 AM" src="https://github.com/user-attachments/assets/f735d951-acb0-4fd6-8292-6a76519fe0fe" />
+
+
+c) Does EDF meet all deadlines? 
+- No. The second instance of T3 misses its deadline.
+d) What is the maximum lateness for EDF?
+- 1 time unit.
+e) What is the utilization?
+- For both RM and EDF, the processor is idle for 3 of 24 time units. Utilization is 21/24 or 87.5%. This is higher than the 69% guaranteed RM feasibility. It is higher than the 78% guaranteed 3-task RM feasibility.
 
 
 
