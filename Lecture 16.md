@@ -107,13 +107,35 @@ At time 18, either T1 or T3 could be scheduled, since they have the same deadlin
 
 <img width="555" alt="Screenshot 2025-05-29 at 9 33 53 AM" src="https://github.com/user-attachments/assets/f735d951-acb0-4fd6-8292-6a76519fe0fe" />
 
-
 c) Does EDF meet all deadlines? 
 - No. The second instance of T3 misses its deadline.
+
 d) What is the maximum lateness for EDF?
 - 1 time unit.
+
 e) What is the utilization?
 - For both RM and EDF, the processor is idle for 3 of 24 time units. Utilization is 21/24 or 87.5%. This is higher than the 69% guaranteed RM feasibility. It is higher than the 78% guaranteed 3-task RM feasibility.
+
+## Latest deadline; EDF*
+- However, EDF is not optimal if there are precedences.
+- LDF selects the last task to execute as the one with the latest deadline that no other task depends on.
+- LDF does its scheduling backwards.
+- To support the arrival of tasks, EDF* uses modified deadlines that take into account dependencies.
+
+### Exercise
+It is desired to schedule two periodic tasks, which may be preemptive. Task 1 has period p1 = 4 and execution time e1 = 2. Task 2 has period p2 = 6 and execution time e2 = 3. Show that scheduling is feasible with Earliest Deadline First (EDF) with 100% utilization.
+<img width="559" alt="Screenshot 2025-05-29 at 9 20 35 AM" src="https://github.com/user-attachments/assets/a9a2006f-978b-4854-a36c-6b1ee0f01cba" />
+
+### Solution
+<img width="526" alt="Screenshot 2025-05-29 at 9 54 25 AM" src="https://github.com/user-attachments/assets/f38a968b-fce9-45fc-90db-9e788c0d0de3" />
+
+### Exercise
+Same question above, but: Show that Rate Monotonic (RM) scheduling does not meet deadlines
+
+### Solution
+<img width="530" alt="Screenshot 2025-05-29 at 9 57 08 AM" src="https://github.com/user-attachments/assets/e8712570-3a70-48cb-a81a-c4ddb354860c" />
+
+
 
 
 
