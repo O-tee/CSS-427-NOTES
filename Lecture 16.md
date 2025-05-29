@@ -1,4 +1,4 @@
-5/29/25
+<img width="1251" alt="image" src="https://github.com/user-attachments/assets/665178c4-bca2-4f81-aea8-685e3625bbbd" />5/29/25
 
 # Scheduling
 
@@ -134,6 +134,79 @@ Same question above, but: Show that Rate Monotonic (RM) scheduling does not meet
 
 ### Solution
 <img width="530" alt="Screenshot 2025-05-29 at 9 57 08 AM" src="https://github.com/user-attachments/assets/e8712570-3a70-48cb-a81a-c4ddb354860c" />
+
+## EDF, LDF, EDF* with precedences(all execution times = 1)
+<img width="454" alt="image" src="https://github.com/user-attachments/assets/f9b1c232-e126-4131-8a41-460b5e2bc267" />
+
+## Priority 
+
+### Inversion
+<img width="746" alt="image" src="https://github.com/user-attachments/assets/f9c3a809-1672-49b3-8307-9b99207f4567" />
+
+- Priority inversion can be a problem, and it may arise unexpectedly.
+- A solution is to use priority inheritance: When a task has a lock, and blocks a higher priority task, the task holding the lock is assigned the priority of the task it is blocking.
+
+### Inheritance
+<img width="826" alt="image" src="https://github.com/user-attachments/assets/9a9ec6ab-c60d-4a05-ac7c-b6000b3ad1d4" />
+
+### Ceiling
+<img width="781" alt="image" src="https://github.com/user-attachments/assets/63d510aa-3576-424a-bef1-c9977f3bac06" />
+- Some deadlocks can be prevented by using the priority ceiling.
+- Every lock is assigned a priority equal to the highest priority task that can lock it.
+- A task can acquire a lock only if that task has higher priority than any lock currently in use.
+
+
+## Deadlock
+<img width="761" alt="image" src="https://github.com/user-attachments/assets/cfcc0f80-b079-4c0e-9359-fa16eca55df7" />
+
+## Multiple tasks on multiple processors
+- Scheduling multiple tasks on multiple processors is NP hard; however, this does not mean infeasible.
+- It means that as the numbers of tasks and processors get large, the computations become ever more difficult.
+- The key to solving NP-hard problems is to limit choices.
+- Keep the number of tasks and processors small.
+- A Hu scheduler adds up the execution times of tasks within a dependency branch, and assigns priorities.
+
+## Weird stuff
+- Local improvement can result in system-wide degradation in multi-processor scheduling.
+- Reducing the execution time of a task can change task orders, resulting in a longer total execution time.
+- Increasing the  number of processors can result in slower makespan
+- Weakening precedence constrains can increase the schedule length
+
+## Base case
+<img width="689" alt="image" src="https://github.com/user-attachments/assets/c883a3e9-d380-4daa-ae5b-527101078233" />
+
+### Reducing execution times by 1 unit
+<img width="697" alt="image" src="https://github.com/user-attachments/assets/9160ca3e-143b-4709-b973-d9061c8853aa" />
+
+Makespan increases from 12 to 13 units!
+
+### Adding a fourth processor
+<img width="625" alt="image" src="https://github.com/user-attachments/assets/0f620e0f-a059-43ba-85ef-6c4062611c83" />
+
+Makespan increases from 12 to 15 units!
+
+### Tasks 7 and 8 no longer depend on 4
+<img width="597" alt="image" src="https://github.com/user-attachments/assets/f25c5f80-5342-4a84-b8e9-c5e268757efc" />
+
+57% utilization
+
+Worst makespan yet: 16 units!
+
+### What if all of the above?
+- Decrease all task execution times by one unit
+- Add a 4th processor
+- No dependencies
+
+## Mutex anomaly
+<img width="573" alt="image" src="https://github.com/user-attachments/assets/99c29ad5-9cd4-4b3d-a627-7aa48aac3496" />
+- Tasks 1 and 2 are assigned to processor 1; 3, 4 & 5 to processor 2
+- Tasks 2 and 4 need the same resource, protected by a mutex
+- Decreasing task 1’s execution time increases the total time
+
+
+
+
+
 
 
 
